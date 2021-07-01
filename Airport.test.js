@@ -16,7 +16,7 @@ describe('Airport object', () => {
     testPassenger1.addBag(testCheckIn)
     testPassenger2.addBag(testCarryOn)
     testPassenger2.addBag(testCheckIn)
-    testBoeing.addPassenger(testPassenger1)
+    testBoeing.addPerson(testPassenger1)
     
 
     test('Aiport has name', () => {

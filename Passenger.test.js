@@ -1,4 +1,5 @@
 const Passenger = require('./Passenger')
+const Person = require('./Person')
 const Bag = require('./Bag')
 
 describe('Passenger object', () => {
@@ -14,5 +15,13 @@ describe('Passenger object', () => {
         testPassenger.addBag(testCarryOn)
         testPassenger.addBag(testCheckIn)
         expect(testPassenger.bags).toStrictEqual([testCarryOn, testCheckIn])
+    })
+
+    test('Passenger can call attendant', () => {
+        console.log = jest.fn()
+
+        testPassenger.callAttendant()
+
+        expect(console.log).toHaveBeenCalledWith("Excuse me!")
     })
 })
