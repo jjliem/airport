@@ -33,4 +33,35 @@ describe('Airport object', () => {
         expect(testLAX.planes[0].passengers[0].bags[0].weight).toBe(15)
     })
 
+    test('gets info with Callbacks', (done) => { //async indicator to jest
+        const LAX = new Airport('LAX')
+    
+        //when
+        LAX.getInfoCallback('LAX', (err, data) => {
+            // first cb arg is err, second is found data
+            //then
+            expect(data.state).toBe("California")
+            done()
+        })
+    })
+
+    test('gets info with Promises', () => { //jest will figure out this is a Promise
+        const LAX = new Airport('LAX')
+    
+        //when
+        return LAX.getInfoPromise('LAX')
+            .then(info => {
+                expect(info.state).toEqual('California')
+            })
+            .catch(err => {
+                expect(err).toBeNull()
+            })
+    })
+
+    test('get info with async/await', async () => {
+        const LAX = new Airport('LAX') 
+        const airport = await LAX.getInfoAsync('LAX')
+        expect(airport.state).toBe('California')
+    })
+
 })
